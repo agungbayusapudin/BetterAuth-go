@@ -3,9 +3,14 @@ package postgres
 import (
 	"database/sql"
 	"fmt"
+	"time"
+
+	"better_auth/internal/config"
+
+	_ "github.com/lib/pq"
 )
 
-func initPostgresConnection(cfg *config.AppConfig) (*sql.DB, error) {
+func InitPostgresConnection(cfg *config.AppConfig) (*sql.DB, error) {
 	var err error
 	var db *sql.DB
 
@@ -22,9 +27,9 @@ func initPostgresConnection(cfg *config.AppConfig) (*sql.DB, error) {
 		return nil, fmt.Errorf("failed to open database connection: %w", err)
 	}
 
-	db.SetMaxOpenConns(cfg.FleixibleConfig.PostgresMaxOpenConns)
-	db.SetMaxIdleConns(cfg.FleixibleConfig.PostgresMaxIdleConns)
-	db.SetConnMaxLifetime(cfg.FleixibleConfig.PostgresConnMaxLifetime)
+	db.SetMaxOpenConns(10)
+	db.SetMaxIdleConns(5)
+	db.SetConnMaxLifetime(300 * time.Second)
 
 	err = db.Ping()
 	if err != nil {
