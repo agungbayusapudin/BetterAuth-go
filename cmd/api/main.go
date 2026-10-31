@@ -18,6 +18,7 @@ func main() {
 
 	// authRepo := postgres.NewAuthRepository(db)
 
+
 	defer db.Close()
 	e.Start(":8080")
 }
