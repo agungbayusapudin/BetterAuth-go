@@ -1,8 +1,8 @@
 package main
 
 import (
+	"better_auth/internal/adapter/repository/postgres"
 	"better_auth/internal/config"
-	"better_auth/internal/service/repository/postgres"
 
 	e "github.com/labstack/echo/v4"
 )
@@ -15,6 +15,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	// authRepo := postgres.NewAuthRepository(db)
 
 	defer db.Close()
 	e.Start(":8080")
