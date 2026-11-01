@@ -15,11 +15,11 @@ func InitPostgresConnection(cfg *config.AppConfig) (*sql.DB, error) {
 	var db *sql.DB
 
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s sslmode=%s",
-		cfg.FleixibleConfig.PostgresUser,
-		cfg.FleixibleConfig.PostgresPassword,
-		cfg.FleixibleConfig.PostgresDBName,
-		cfg.FleixibleConfig.PostgresHost,
-		cfg.FleixibleConfig.PostgresSSLMode,
+		cfg.PostgreConfig.PostgresUser,
+		cfg.PostgreConfig.PostgresPassword,
+		cfg.PostgreConfig.PostgresDBName,
+		cfg.PostgreConfig.PostgresHost,
+		cfg.PostgreConfig.PostgresSSLMode,
 	)
 
 	db, err = sql.Open("postgres", connStr)
