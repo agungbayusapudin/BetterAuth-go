@@ -22,8 +22,8 @@ func main() {
 		panic(err)
 	}
 
-	// authRepo := postgres.NewAuthRepository(db)
-
+	authRepo := postgres.NewAuthRepository(db)
+	
 
 	defer db.Close()
 	e.Start(":8080")
