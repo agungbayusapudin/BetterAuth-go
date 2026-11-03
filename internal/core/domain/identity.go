@@ -1,30 +1,32 @@
 package domain
 
-import "time"
-
-
-
-type UserIdentity struct {
-	Id string
-	UserId string
-	Provider string
-	ProviderUserId string
-	SecretHash string
-	ProviderData string
-	LastUsedAt time.Time
-	CreatedAt time.Time
+type Identity struct {
+	Id             string `json:"id"`
+	UserId         string `json:"user_id"`
+	Provider       string `json:"provider"`
+	ProviderUserId string `json:"provider_user_id"`
+	SecretHash     string `json:"secret_hash"`
+	ProviderData   string `json:"provider_data"`
+	LastUsedAt     string `json:"last_used_at"`
+	CreatedAt      string `json:"created_at"`
 }
 
-
-
-// CREATE TABLE user_identities (
-//   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-//   user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-//   provider        TEXT NOT NULL,              -- 'password','google','github','apple','phone_otp','passkey','saml:acme'
-//   provider_user_id TEXT NOT NULL,             -- sub dari Google, email untuk password, nomor HP, credential_id passkey
-//   secret_hash     TEXT,                       -- hanya untuk password (argon2id)
-//   provider_data   JSONB DEFAULT '{}',         -- profil mentah dari provider
-//   last_used_at    TIMESTAMPTZ,
-//   created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
-//   UNIQUE (provider, provider_user_id)
+// -- auto-generated definition
+// create table user_identities
+// (
+//     id               uuid                     default gen_random_uuid() not null
+//         primary key,
+//     user_id          uuid                                               not null
+//         references users
+//             on delete cascade,
+//     provider         text                                               not null,
+//     provider_user_id text                                               not null,
+//     secret_hash      text,
+//     provider_data    jsonb                    default '{}'::jsonb,
+//     last_used_at     timestamp with time zone,
+//     created_at       timestamp with time zone default now()             not null,
+//     unique (provider, provider_user_id)
 // );
+
+// alter table user_identities
+//     owner to postgres;

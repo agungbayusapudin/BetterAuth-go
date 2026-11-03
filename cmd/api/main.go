@@ -22,8 +22,8 @@ func main() {
 		panic(err)
 	}
 
-	authRepo := postgres.NewAuthRepository(db)
-	
+	// this code will move to the container.go to centralize the dependency injection and to make the main.go cleaner and more maintainable
+	// authRepo := postgres.NewAuthRepository(db)
 
 	defer db.Close()
 	e.Start(":8080")

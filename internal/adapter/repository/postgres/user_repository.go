@@ -21,6 +21,8 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 	}
 }
 
+// NOTE: migrate to use ORM for data transaction management and to reduce boilerplate code for database operations. Consider using GORM or Ent for better maintainability and scalability of the repository layer.
+
 // CreateUser membuat user baru dengan transaction context
 func (r *UserRepository) CreateUser(user *domain.User) (*domain.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
