@@ -35,7 +35,7 @@ func InitPostgresConnection(cfg *config.AppConfig) (*sql.DB, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to ping database: %w", err)
 	} else {
-		fmt.Printf("postgress database connection pool initialized successfully!")
+		fmt.Printf("postgress database connection successfuly done and good!")
 	}
 
 	return db, nil

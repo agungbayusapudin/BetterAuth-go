@@ -16,6 +16,9 @@ func NewAuthPasswordService(userRepository postgres.UserRepository) *AuthPasswor
 }
 
 func (s *AuthPasswordService) Login(user *domain.User) (*domain.User, error) {
+	// ini diguankan untuk melakukan logic bbisnis aplikasi
+
+	// dimana dialamnya terdapat bebera hal validasi untuk requirement yang dibutuhkan seperti itu
 	return s.repo.GetUser(user.ID)
 }
 

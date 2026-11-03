@@ -17,5 +17,20 @@ func NewAuthPasswordController(authService service.AuthPasswordService) *AuthPas
 }
 
 func (c *AuthPasswordController) Login(ctx echo.Context) error {
+	// function ini diguankan untuk melakukan login
+
+	// iisinya adalah validatsi input dan mengirimkan ke service
+
+	// handling response error dan response sukksess
 	return nil
 }
+
+
+func (c *AuthPasswordController) Register(ctx echo.Context) error {
+	return nil
+}
+
+func (c *AuthPasswordController) Logout(ctx echo.Context) error {
+	return nil
+}
+
