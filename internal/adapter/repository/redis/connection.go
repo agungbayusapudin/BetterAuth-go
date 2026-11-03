@@ -13,7 +13,7 @@ import (
 var Client *goredis.Client
 
 func InitialRedisConnection (cfg *config.AppConfig) (error) {
-	var err error
+	var err error 
 
 	Client = goredis.NewClient(&goredis.Options{
 		Addr:     fmt.Sprintf("%s:%s", cfg.RedisConfig.RedisHost, cfg.RedisConfig.RedisPort),
